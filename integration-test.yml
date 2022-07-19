@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
 
       - name: Setup Node and pnpm
         uses: silverhand-io/actions-node-pnpm-run-steps@v1.2.3
@@ -24,7 +23,6 @@ jobs:
       - name: Package
         run: ./package.sh
 
-      - uses: actions/upload-artifact@v3
         with:
           name: integration-test-${{ github.sha }}
           path: /tmp/logto.tar.gz
@@ -54,7 +52,6 @@ jobs:
         with:
           run-install: false
 
-      # Setup integration test
       - name: Install dependencies
         run: |
           mv tests /tmp/tests
